@@ -282,6 +282,10 @@
     <script type="text/javascript"
    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
+    <script type="text/ecmascript" src="./pagedown/Markdown.Converter.js"></script>
+    <script type="text/ecmascript" src="./pagedown/Markdown.Sanitizer.js"></script>
+    <script type="text/ecmascript" src="./pagedown/Markdown.Editor.js"></script>
+    <script type="text/ecmascript" src="./scripts.js"></script>
 </head>
 <body>
     <header class="site-header">
@@ -293,12 +297,12 @@
             {/block:IfLogoImage}
             {block:ifShowTitle}
             <a href="/">
-                <h1>{Title}</h1>
+                <h1 class="needs-markdown">{Title}</h1>
             </a>
             {/block:ifShowTitle}
             {block:ifShowDescription}
             {block:Description}
-            <p>{Description}</p>
+            <p class="needs-markdown">{Description}</p>
             {/block:Description}
             {/block:ifShowDescription}
             {block:ifShowSocial}
@@ -410,7 +414,7 @@
         <div class="nav-bar-inner">
             {block:ifShowTitleInNavbar}
             <a href="/">
-                <h1>{Title}</h1>
+                <h1 class="needs-markdown">{Title}</h1>
             </a>
             {/block:ifShowTitleInNavbar}
             <button class="toggle-menu" type="button">
@@ -451,10 +455,10 @@
                 {block:Text}
                 {block:Title}
                 <a href="{Permalink}">
-                    <h3>{Title}</h3>
+                    <h3 class="needs-markdown">{Title}</h3>
                 </a>
                 {/block:Title}
-                {Body}
+                <div class="needs-markdown">{Body}</div>
                 {block:More}
                 <p>
                     <a href="{Permalink}">{lang:Read more}</a>
@@ -468,7 +472,7 @@
                     {/block:Photos}
                 </div>
                 {block:Caption}
-                {Caption}
+                <div class="needs-markdown">{Caption}</div>
                 {/block:Caption}
                 {/block:Photoset}
                 {block:Photo}
@@ -509,7 +513,7 @@
                         {block:ifShowExifData}
                     </div><!-- /.photo-wrapper -->
                     {block:Caption}
-                    <figcaption>
+                    <figcaption class="needs-markdown">
                         {Caption}
                     </figcaption>
                     {/block:Caption}
@@ -517,7 +521,7 @@
                 {/block:Photo}
                 {block:Quote}
                 <blockquote>
-                    <p class="big-quote">{Quote}</p>
+                    <p class="big-quote needs-markdown">{Quote}</p>
                     {block:Source}
                     <footer><p>&ndash; {Source}</p></footer>
                     {/block:Source}
@@ -528,7 +532,7 @@
                     {Name}
                 </a>
                 {block:Description}
-                    {Description}
+                    <div class="needs-markdown">{Description}</div>
                 {/block:Description}
                 {/block:Link}
                 {block:Chat}
@@ -565,7 +569,7 @@
                 </div><!-- /.audio-player -->
                 {/block:AudioPlayer}
                 {block:Caption}
-                {Caption}
+                <div class="needs-markdown">{Caption}</div>
                 {/block:Caption}
                 {/block:Audio}
                 {block:Video}
@@ -573,12 +577,12 @@
                     {Video-700}
                 </div>    
                 {block:Caption}
-                {Caption}
+                <div class="needs-markdown">{Caption}</div>
                 {/block:Caption}
                 {/block:Video}
                 {block:Answer}
-                <p>{Asker}: <q>{Question}</q></p>
-                {Answer}
+                <p>{Asker}: <q class="needs-markdown">{Question}</q></p>
+                <div class="needs-markdown">{Answer}</div>
                 {/block:Answer}
                 <footer class="post-footer">
                     {block:HasTags}
@@ -888,5 +892,24 @@
     <script src="http://static.tumblr.com/7esz91z/9IRn5krc2/googleanalytics.js">
     </script>
     {/block:IfGoogleAnalyticsID}
+    <script type="text/ecmascript">
+    (function () {
+        var converter = new Markdown.Converter();
+        converter.hooks.chain("preBlockGamut",
+            function (text, rbg) {
+                return text.replace(/^ {0,3}""" *\n((?:.*?\n)+?) {0,3}""" *$/gm,
+                                        function (whole, inner) {
+                                            return "<blockquote>" + rbg(inner) + "</blockquote>\n";
+                                        });
+            });
+        // Go over specific elements and transform them into html...
+        S('.needs-markdown').each(function ( index ) {
+            // Replace the content...
+            var markdown_text = $(this).html();
+            var html_content = converter.makeHtml(markdown_text);
+            $(this).html(html_content);
+        });
+    })();
+    </script>
 </body>
 </html>
