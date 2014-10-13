@@ -1,56 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>
         {Title}{block:PostSummary} &mdash; {PostSummary}{/block:PostSummary}
     </title>
     {block:Description}
-    <meta name="description" content="{MetaDescription}">
+    <meta name="description" content="{MetaDescription}"/>
     {/block:Description}
     <meta name="text:google-site-verification" content=""/>
     {block:ifgoogle-site-verification}
     <meta name="google-site-verification" content="{text:google-site-verification}" />
     {/block:ifgoogle-site-verification}
-    <meta name="image:Header Background" content="">
-    <meta name="image:Logo" content="">
-    <meta name="color:Text" content="#333">
-    <meta name="color:Link" content="#999">
-    <meta name="color:Header Text" content="#333">
-    <meta name="color:Header Background" content="#FFF">
-    <meta name="color:Navbar Icons" content="#333">
-    <meta name="color:Navbar Background" content="#FFF">
-    <meta name="color:Page Background" content="#FFF">
-    <meta name="color:Footer Background" content="#FFF">
-    <meta name="color:Menu Background" content="#FFF">
-    <meta name="color:Search Text" content="#333">
-    <meta name="color:Search Background" content="#FFF">
-    <meta name="color:Button Background" content="#333">
-    <meta name="color:Button Text" content="#FFF">
-    <meta name="if:Show Title" content="1">
-    <meta name="if:Show Description" content="1">
-    <meta name="if:Show Social" content="1">
-    <meta name="if:Show Title In Navbar" content="1">
-    <meta name="if:Show Search" content="1">
-    <meta name="if:Show Exif Data" content="1">
-    <meta name="if:Show Notes" content="1">
-    <meta name="if:Show Like Button" content="1">
-    <meta name="if:Show Reblog Button" content="1">
-    <meta name="if:Show Sharing Options" content="1">
-    <meta name="if:Load More Button" content="0">
-    <meta name="if:Infinite Scroll" content="0">
-    <meta name="if:Full Width Photos" content="1">
-    <meta name="if:Fixed Header Background" content="0">
-    <meta name="if:Show RSS" content="1">
-    <meta name="text:Email" content="">
-    <meta name="text:Facebook" content="">
-    <meta name="text:Google Plus" content="">
-    <meta name="text:Twitter" content="">
-    <meta name="text:LinkedIn" content="">
-    <meta name="text:Github" content="">
-    <meta name="text:YouTube" content="">
-    <meta name="text:Flattr" content="">
-    <meta name="text:Patreon" content="">
+    <meta name="image:Header Background" content=""/>
+    <meta name="image:Logo" content=""/>
+    <meta name="color:Text" content="#333"/>
+    <meta name="color:Link" content="#999"/>
+    <meta name="color:Header Text" content="#333"/>
+    <meta name="color:Header Background" content="#FFF"/>
+    <meta name="color:Navbar Icons" content="#333"/>
+    <meta name="color:Navbar Background" content="#FFF"/>
+    <meta name="color:Page Background" content="#FFF"/>
+    <meta name="color:Footer Background" content="#FFF"/>
+    <meta name="color:Menu Background" content="#FFF"/>
+    <meta name="color:Search Text" content="#333"/>
+    <meta name="color:Search Background" content="#FFF"/>
+    <meta name="color:Button Background" content="#333"/>
+    <meta name="color:Button Text" content="#FFF"/>
+    <meta name="if:Show Title" content="1"/>
+    <meta name="if:Show Description" content="1"/>
+    <meta name="if:Show Social" content="1"/>
+    <meta name="if:Show Title In Navbar" content="1"/>
+    <meta name="if:Show Search" content="1"/>
+    <meta name="if:Show Exif Data" content="1"/>
+    <meta name="if:Show Notes" content="1"/>
+    <meta name="if:Show Like Button" content="1"/>
+    <meta name="if:Show Reblog Button" content="1"/>
+    <meta name="if:Show Sharing Options" content="1"/>
+    <meta name="if:Load More Button" content="0"/>
+    <meta name="if:Infinite Scroll" content="0"/>
+    <meta name="if:Full Width Photos" content="1"/>
+    <meta name="if:Fixed Header Background" content="0"/>
+    <meta name="if:Show RSS" content="1"/>
+    <meta name="text:Email" content=""/>
+    <meta name="text:Facebook" content=""/>
+    <meta name="text:Google Plus" content=""/>
+    <meta name="text:Twitter" content=""/>
+    <meta name="text:LinkedIn" content=""/>
+    <meta name="text:Github" content=""/>
+    <meta name="text:YouTube" content=""/>
+    <meta name="text:Flattr" content=""/>
+    <meta name="text:Patreon" content=""/>
+    <meta name="text:PayPal" content=""/>
     <meta name="text:Photo Max Width" content="960px">
     <meta name="text:Video Max Width" content="960px">
     <meta name="text:Google Web Font" content="Lora">
@@ -76,7 +77,7 @@
     }
     a {
         color: {color:Link};
-        text-decoration: none;
+        text-decoration: underline;
         transition: color 0.3s;
     }
     a > h1,
@@ -371,10 +372,17 @@
                     </a>
                 </li>
                 {/block:ifYouTube}
+                {block:ifPayPal}
+                <li>
+                    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id={text:PayPal}">
+                        <i class="fa fa-paypal"></i>
+                    </a>
+                </li>
+                {/block:ifPayPal}
                 {block:ifPatreon}
                 <li>
-                    <a href="http://patreon.com/{text:Patreon}">
-                        <i class="fa fa-patreon"></i>
+                    <a href="http://patreon.com/{text:patreon}">
+                        <i class="fa fa-money"></i>
                     </a>
                 </li>
                 {/block:ifPatreon}
