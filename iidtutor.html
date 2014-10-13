@@ -40,7 +40,7 @@
     <meta name="if:Load More Button" content="0"/>
     <meta name="if:Infinite Scroll" content="0"/>
     <meta name="if:Full Width Photos" content="1"/>
-    <meta name="if:Fixed Header Background" content="0"/>
+    <meta name="if:Fixed Header Background" content="1"/>
     <meta name="if:Show RSS" content="1"/>
     <meta name="text:Email" content=""/>
     <meta name="text:Facebook" content=""/>
@@ -70,7 +70,7 @@
     <style>
     html {
         color: {color:Text};
-        font: 100%/1.5 {block:ifGoogleWebFont}{text:Google Web Font},{/block:ifGoogleWebFont} Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font: 100%/1.5 {block:ifGoogleWebFont}{text:Google Web Font},{/block:ifGoogleWebFont} , serif;
         -webkit-font-smoothing: antialiased;
         -webkit-text-size-adjust: 100%;
             -ms-text-size-adjust: 100%;
@@ -410,7 +410,7 @@
             {/block:TagPage}
         </div><!-- /.site-header-inner -->
     </header>
-    <div class="nav-bar">
+    <nav class="nav-bar">
         <div class="nav-bar-inner">
             {block:ifShowTitleInNavbar}
             <a href="/">
@@ -426,7 +426,7 @@
             </button>
             {/block:ifShowSearch}
         </div>
-    </div>
+    </nav>
     <nav class="site-nav">
         <ul class="pages">
             {block:HasPages}
@@ -608,13 +608,6 @@
                                     </a>
                                 </li>
                                 {/block:Date}
-                                {block:IfDisqusShortname}
-                                <li>
-                                    <a href="{Permalink}#disqus_thread">
-                                        {lang:View comments}
-                                    </a>
-                                </li>
-                                {/block:IfDisqusShortname}
                                 {block:ifShowNotes}
                                 {block:NoteCount}
                                 <li>
@@ -669,19 +662,7 @@
                             </a>
                         </li>
                     </ul>
-                    {/block:ifShowSharingOptions}
-                    {block:IfDisqusShortname}
-                    <div id="disqus_thread"></div>
-                    <noscript>
-                        Please enable JavaScript to view the 
-                        <a href="http://disqus.com/?ref_noscript">
-                            comments powered by Disqus.
-                        </a>
-                    </noscript>
-                    <a href="http://disqus.com" class="dsq-brlink">
-                        blog comments powered by <span class="logo-disqus">Disqus</span>
-                    </a>
-                    {/block:IfDisqusShortname} 
+                    {/block:ifShowSharingOptions} 
                     {block:ifShowNotes}
                     {block:PostNotes}
                     <div id="#notes">
@@ -874,17 +855,6 @@
             
         }); // /ready
         </script>
-    {block:ifDisqusShortname}
-    <script>
-        var disqus_shortname = '{text:Disqus Shortname}';
-    </script>
-    {block:PermalinkPage}
-    <script src="http://static.tumblr.com/7esz91z/rNVn5kqnp/disqusembed.js"></script>
-    {/block:PermalinkPage}
-    {block:IndexPage}
-    <script src="http://static.tumblr.com/7esz91z/tN5n5kqx4/disquscount.js"></script>
-    {/block:IndexPage}
-    {/block:ifDisqusShortname}
     {block:IfGoogleAnalyticsID}
     <script>
         var gaID = '{text:Google Analytics ID}';
