@@ -46,11 +46,11 @@
     <meta name="text:Github" content="">
     <meta name="text:YouTube" content="">
     <meta name="text:Flattr" content="">
+    <meta name="text:Patreon" content="">
     <meta name="text:Photo Max Width" content="960px">
     <meta name="text:Video Max Width" content="960px">
-    <meta name="text:Google Web Font" content="">
+    <meta name="text:Google Web Font" content="Lora">
     <meta name="text:Google Analytics ID" content="">
-    <meta name="text:Disqus Shortname" content="">
     <meta name="text:French" content="">
     <meta name="text:English" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -367,6 +367,13 @@
                     </a>
                 </li>
                 {/block:ifYouTube}
+                {block:ifPatreon}
+                <li>
+                    <a href="http://patreon.com/{text:Patreon}">
+                        <i class="fa fa-patreon"></i>
+                    </a>
+                </li>
+                {/block:ifPatreon}
                 {block:ifFlattr}
                 <script id='fb56ass'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid={text:Flattr}&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fb56ass');</script>
                 {/block:ifFlattr}
