@@ -9,11 +9,9 @@
     <meta name="description" content="{MetaDescription}"/>
     {/block:Description}
     <meta name="text:Google Site Verification" content=""/>
-    {block:ifGoogleSiteVerification}
+    {block:GoogleSiteVerification}
     <meta name="google-site-verification" content="{text:GoogleSiteVerification}" />
-    {/block:ifGoogleSiteVerification}
-    <meta name="image:Header Background" content=""/>
-    <meta name="image:Logo" content=""/>
+    {/block:GoogleSiteVerification}
     <meta name="color:Text" content="#333"/>
     <meta name="color:Link" content="#999"/>
     <meta name="color:Header Text" content="#333"/>
@@ -101,7 +99,7 @@
         padding: .5rem 1.5rem;
     }
     .site-header {
-        background: url({image:Header Background}) no-repeat center center {block:ifFixedHeaderBackground} fixed {block:ifFixedHeaderBackground};
+        background: url({HeaderImage}) no-repeat center center {block:ifFixedHeaderBackground} fixed {block:ifFixedHeaderBackground};
         -webkit-background-size: cover;
            -moz-background-size: cover;
              -o-background-size: cover;
@@ -290,11 +288,11 @@
 <body>
     <header class="site-header">
         <div class="site-header-inner">
-            {block:IfLogoImage}
+            {block:Avatar}
             <a href="/">
-                <img src="{image:Logo}" class="logo">
+                <img src="{Avatar}" class="logo">
             </a>
-            {/block:IfLogoImage}
+            {/block:Avatar}
             {block:ifShowTitle}
             <a href="/">
                 <h1 class="needs-markdown">{Title}</h1>
