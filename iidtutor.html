@@ -12,6 +12,8 @@
     {block:GoogleSiteVerification}
     <meta name="google-site-verification" content="{text:GoogleSiteVerification}" />
     {/block:GoogleSiteVerification}
+    <meta name="image:Header Background" content="{HeaderImage}"/>
+    <meta name="image:Logo" content="{Avatar}"/>
     <meta name="color:Text" content="#333"/>
     <meta name="color:Link" content="#999"/>
     <meta name="color:Header Text" content="#333"/>
@@ -56,6 +58,8 @@
     <meta name="text:Google Analytics ID" content="">
     <meta name="text:French" content="">
     <meta name="text:English" content="">
+    <meta name="text:Pagedown URL" content="https://github.com/ejetzer/iidtutor/raw/master/pagedown"/>
+    <meta name="text:MathJax URL" content="http://cdn.mathjax.org/mathjax/latest"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{Favicon}">
     <link rel="apple-touch-icon" href="{PortraitURL-128}">
@@ -99,7 +103,7 @@
         padding: .5rem 1.5rem;
     }
     .site-header {
-        background: url({HeaderImage}) no-repeat center center {block:ifFixedHeaderBackground} fixed {block:ifFixedHeaderBackground};
+        background: url({image:Header Background}) no-repeat center center {block:ifFixedHeaderBackground} fixed {block:ifFixedHeaderBackground};
         -webkit-background-size: cover;
            -moz-background-size: cover;
              -o-background-size: cover;
@@ -265,6 +269,7 @@
     }
     {CustomCSS}
     </style>
+    {block:ifMathJaxURL}
     <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
@@ -278,21 +283,24 @@
   });
     </script>
     <script type="text/javascript"
-   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   src="{text:MathJax URL}/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
-    <script type="text/ecmascript" src="./pagedown/Markdown.Converter.js"></script>
-    <script type="text/ecmascript" src="./pagedown/Markdown.Sanitizer.js"></script>
-    <script type="text/ecmascript" src="./pagedown/Markdown.Editor.js"></script>
+    {/block:ifMathJaxURL}
+    {block:ifPageDownURL}
+    <script type="text/ecmascript" src="{text:PageDown URL}/Markdown.Converter.js"></script>
+    <script type="text/ecmascript" src="{text:PageDown URL}/Markdown.Sanitizer.js"></script>
+    <script type="text/ecmascript" src="{text:PageDown URL}/Markdown.Editor.js"></script>
+    {/block:ifPageDownURL}
     <script type="text/ecmascript" src="./scripts.js"></script>
 </head>
 <body>
     <header class="site-header">
         <div class="site-header-inner">
-            {block:Avatar}
+            {block:ifLogo}
             <a href="/">
-                <img src="{Avatar}" class="logo">
+                <img src="{image:Logo}" class="logo">
             </a>
-            {/block:Avatar}
+            {/block:ifLogo}
             {block:ifShowTitle}
             <a href="/">
                 <h1 class="needs-markdown">{Title}</h1>
@@ -860,6 +868,7 @@
     <script src="http://static.tumblr.com/7esz91z/9IRn5krc2/googleanalytics.js">
     </script>
     {/block:IfGoogleAnalyticsID}
+    {block:ifPageDownURL}
     <script type="text/ecmascript">
     (function () {
         var converter = new Markdown.Converter();
@@ -879,5 +888,6 @@
         });
     })();
     </script>
+    {/block:ifPageDownURL}
 </body>
 </html>
