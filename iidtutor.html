@@ -13,7 +13,6 @@
     <meta name="google-site-verification" content="{text:GoogleSiteVerification}" />
     {/block:GoogleSiteVerification}
     <meta name="image:Header Background" content="{HeaderImage}"/>
-    <meta name="image:Logo" content="{Avatar}"/>
     <meta name="color:Text" content="#333"/>
     <meta name="color:Link" content="#999"/>
     <meta name="color:Header Text" content="#333"/>
@@ -37,7 +36,7 @@
     <meta name="if:Show Like Button" content="1"/>
     <meta name="if:Show Reblog Button" content="1"/>
     <meta name="if:Show Sharing Options" content="1"/>
-    <meta name="if:Load More Button" content="0"/>
+    <meta name="if:Load More Button" content="1"/>
     <meta name="if:Infinite Scroll" content="0"/>
     <meta name="if:Full Width Photos" content="1"/>
     <meta name="if:Fixed Header Background" content="1"/>
@@ -58,29 +57,27 @@
     <meta name="text:Google Analytics ID" content="">
     <meta name="text:French" content="">
     <meta name="text:English" content="">
-    <meta name="text:Pagedown URL" content="https://github.com/ejetzer/iidtutor/raw/master/pagedown"/>
+    <meta name="text:Github Repository" content="https://github.com/{text:Github}/iddtutor/raw/master"/>
+    <meta name="text:Pagedown URL" content="{text:Github Repository}/pagedown"/>
+    <meta name="text:CSS Base URL" content="{text:Github Repository}/styles"/>
     <meta name="text:MathJax URL" content="http://cdn.mathjax.org/mathjax/latest"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{Favicon}">
     <link rel="apple-touch-icon" href="{PortraitURL-128}">
     <link rel="alternate" type="application/rss+xml" href="{RSS}">
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
     {block:ifGoogleWebFont}
     <link href='http://fonts.googleapis.com/css?family={text:Google Web Font}' rel='stylesheet' type='text/css'>
     {/block:ifGoogleWebFont}
     <link href="http://static.tumblr.com/7esz91z/uVAn5wo0l/main.min.css" rel="stylesheet">
+    <link href="{text:CSS Base URL}/basic.css" rel="stylesheet"/>
     <style>
     html {
         color: {color:Text};
-        font: 100%/1.5 {block:ifGoogleWebFont}{text:Google Web Font},{/block:ifGoogleWebFont} , serif;
-        -webkit-font-smoothing: antialiased;
-        -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
+        font-family: {block:ifGoogleWebFont}{text:Google Web Font},{/block:ifGoogleWebFont} , serif;
     }
     a {
         color: {color:Link};
-        text-decoration: underline;
-        transition: color 0.3s;
     }
     a > h1,
     a > h2,
@@ -88,60 +85,27 @@
         color: {color:Text};
     }
     .btn {
-        -webkit-appearance: none;
-           -moz-appearance: none;
-                appearance: none;
         background: {color:Button Background};
-        border: 0;
-        border-radius: 0;
         color: {color:Button Text};
-        cursor: pointer;
-        font: inherit;
-        -webkit-font-smoothing: inherit;
-        margin: 0;
-        outline: 0;
-        padding: .5rem 1.5rem;
     }
     .site-header {
-        background: url({image:Header Background}) no-repeat center center {block:ifFixedHeaderBackground} fixed {block:ifFixedHeaderBackground};
-        -webkit-background-size: cover;
-           -moz-background-size: cover;
-             -o-background-size: cover;
-                background-size: cover;
+        background: url({HeaderImage}) no-repeat center center {block:ifFixedHeaderBackground} fixed {block:ifFixedHeaderBackground};
         background-color: {color:Header Background};
         color: {color:Header Text};
-        display: table;
-        height: 50%;
         {block:IndexPage}
         height: 100%;
         {block:IndexPage}
-        text-align: center;
-        width: 100%;
     }
     .site-header a,
     .site-header h1,
     .nav-bar h1 {
         color: {color:Header Text};
     }
-    .nav-bar {
-        background: transparent;
-        height: 48px;
-        position: fixed;
-        top: 0; left: 0;
-        text-align: center;
-        -webkit-transition: background 0.3s;
-           -moz-transition: background 0.3s;
-                transition: background 0.3s;
-        width: 100%;
-        z-index: 9999;
-    }
     .nav-bar button {
         color: {color:Navbar Icons};
     }
     .nav-bar.active {
-        background: {color:Navbar Background};
-        border-bottom: 1px solid #EEE;
-    }
+        background: {color:Navbar Background};    }
     {block:ifShowSearch}
     .toggle-search {
         top: 0; right: 0;
@@ -161,22 +125,10 @@
     {/block:ifShowExifData}
     .site-nav {
         background: {color:Menu Background};
-        border-bottom: 1px solid #EEE;
-        display: none;
-        padding: 48px 1.5rem 0 1.5rem;
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%;
-        z-index: 999;
     }
     {block:ifShowSearch}
     .input-search {
-        -webkit-appearance: none;
-           -moz-appearance: none;
-                appearance: none;
         background: {color:Search Background};
-        border: 0;
-        border-radius: 0;
         color: {color:Search Text};
         font: inherit;
         -webkit-font-smoothing: inherit;
@@ -199,13 +151,9 @@
     {/block:ifShowSearch}
     .posts {
         background: {color:Page Background};
-        padding: 1.5rem;
     }
     .photo {
         max-width: {text:Photo Max Width};
-    }
-    .photo-wrapper {
-        position: relative;
     }
     {block:ifShowExifData}
     .exif {
@@ -234,17 +182,12 @@
     }
     .photo img,
     .photoset-grid {
-        display: block;
-        height: auto;
-        margin: 0 auto 1rem auto;
         {block:ifFullWidthPhotos}
         width: 100%;
         {/block:ifFullWidthPhotos}        
     }
     .site-footer {
         background: {color:Footer Background};
-        text-align: center;
-        padding-bottom: 3rem;
     }
     {block:ifLoadMoreButton}
     .previous,
@@ -257,16 +200,7 @@
     .next {
         display: none;
     }
-    {block:ifInfiniteScroll}
-    img.avatar {
-        display: inline;
-        margin: 0 .5rem 0 0;
-        width: auto;
-    }
-    .logo {
-        display: block;
-        margin: 0 auto 1rem auto;
-    }
+    {/block:ifInfiniteScroll}
     {CustomCSS}
     </style>
     {block:ifMathJaxURL}
@@ -296,11 +230,11 @@
 <body>
     <header class="site-header">
         <div class="site-header-inner">
-            {block:ifLogo}
+            {block:Avatar}
             <a href="/">
-                <img src="{image:Logo}" class="logo">
+                <img src="{Avatar}" class="logo">
             </a>
-            {/block:ifLogo}
+            {/block:Avatar}
             {block:ifShowTitle}
             <a href="/">
                 <h1 class="needs-markdown">{Title}</h1>
@@ -385,7 +319,7 @@
                 {block:ifPayPal}
                 <li>
                     <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id={text:PayPal}">
-                        <i class="fa fa-paypal"></i>
+                        <i class="fa fa-cc-paypal"></i>
                     </a>
                 </li>
                 {/block:ifPayPal}
