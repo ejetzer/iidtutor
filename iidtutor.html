@@ -9,9 +9,9 @@
     <meta name="description" content="{MetaDescription}"/>
     {/block:Description}
     <meta name="text:Google Site Verification" content=""/>
-    {block:GoogleSiteVerification}
+    {block:ifGoogleSiteVerification}
     <meta name="google-site-verification" content="{text:GoogleSiteVerification}" />
-    {/block:GoogleSiteVerification}
+    {/block:ifGoogleSiteVerification}
     <meta name="image:Header Background" content="{HeaderImage}"/>
     <meta name="color:Text" content="#333"/>
     <meta name="color:Link" content="#999"/>
