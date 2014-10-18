@@ -285,10 +285,12 @@
    src="{text:MathJax URL}/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
     {/block:ifMathJaxURL}
+    {block:ifGithub}
     <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/pagedown/Markdown.Converter.js"></script>
     <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/pagedown/Markdown.Sanitizer.js"></script>
     <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/pagedown/Markdown.Editor.js"></script>
     <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/scripts.js"></script>
+    {/block:ifGithub}
 </head>
 <body>
     <header class="site-header">
@@ -371,7 +373,14 @@
                         <i class="fa fa-github"></i>
                     </a>
                 </li>
-               {/block:ifGithub}
+                {/block:ifGithub}
+                {block:ifReddit}
+                <li>
+                    <a href="http://reddit.com/r/{text:Reddit}">
+                        <i class="fa fa-reddit"></i>
+                    </a>
+                </li>
+                {/block:ifReddit}
                 {block:ifYouTube}
                 <li>
                     <a href="http://youtube.com/{text:YouTube}">
@@ -397,7 +406,7 @@
                 <script id='fb56ass'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid={text:Flattr}&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fb56ass');</script>
                 {/block:ifFlattr}
             </ul>
-            {block:ifShowSocial}
+            {/block:ifShowSocial}
             {block:SearchPage}
             <div class="results">
                 {lang:SearchResultCount results for SearchQuery}
@@ -458,25 +467,29 @@
                 {block:Text}
                 {block:Title}
                 <a href="{Permalink}">
-                    <h3 class="needs-markdown">{Title}</h3>
+                    <h2 class="needs-markdown">{Title}</h2>
                 </a>
                 {/block:Title}
                 <div class="needs-markdown">{Body}</div>
                 {block:More}
                 <p>
-                    <a href="{Permalink}">{lang:Read more}</a>
+                    <a href="{Permalink}" title="{lang:Read more}">{lang:Read more}</a>
                 </p>
                 {/block:More}
                 {/block:Text}
                 {block:Photoset}
+                <figure>
                 <div class="photoset-grid" data-layout="{PhotosetLayout}" data-id="photoset{PostID}">
                     {block:Photos}
                     <img src="{PhotoURL-500}"{block:HighRes} data-highres="{PhotoURL-HighRes}"{/block:HighRes}width="{PhotoWidth-500}" height="{PhotoHeight-500}" {block:Caption}alt="{Caption}"{/block:caption} />
                     {/block:Photos}
                 </div>
                 {block:Caption}
+                <figcaption>
                 <div class="needs-markdown">{Caption}</div>
+                </figcaption>
                 {/block:Caption}
+                </figure>
                 {/block:Photoset}
                 {block:Photo}
                  <figure>
@@ -531,7 +544,7 @@
                 </blockquote>
                 {/block:Quote}
                 {block:Link}
-                <a href="{URL}" {Target} class="big-link">
+                <a href="{URL}" {Target} class="big-link needs-markdown">
                     {Name}
                 </a>
                 {block:Description}
@@ -548,7 +561,7 @@
                     {block:Lines}
                     <li class="{Alt}">
                         {block:Label}
-                        {Label}
+                        <strong>{Label}: </strong>
                         {/block:Label}
                         {Line}
                     </li>
@@ -584,8 +597,11 @@
                 {/block:Caption}
                 {/block:Video}
                 {block:Answer}
-                <p>{Asker}: <q class="needs-markdown">{Question}</q></p>
-                <div class="needs-markdown">{Answer}</div>
+                <blockquote>
+                    <p class="big-quote needs-markdown">{Question}</p>
+                    <footer><p>&ndash; {Asker}</p></footer>
+                </blockquote>
+                <section class="needs-markdown">{Answer}</section>
                 {/block:Answer}
                 <footer class="post-footer">
                     {block:HasTags}
@@ -664,6 +680,37 @@
                                 <i class="fa fa-twitter"></i>
                             </a>
                         </li>
+                        <li>
+                            <a href="{Permalink}">
+                                <i class="fa fa-link"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <script type="text/javascript">
+                              reddit_url = "{Permalink}";
+                              {block:Title}reddit_title = "{Title}";{/block:Title}
+                              reddit_target = "ejetzer";
+                            </script>
+                            <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+                        </li>
+                        <!-- Flattr & Stuff -->
+                        {block:ifPayPal}
+                        <li>
+                            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id={text:PayPal}">
+                                <i class="fa fa-cc-paypal"></i>
+                            </a>
+                        </li>
+                        {/block:ifPayPal}
+                        {block:ifPatreon}
+                        <li>
+                            <a href="http://patreon.com/{text:Patreon}">
+                                <i class="fa fa-money"></i>
+                            </a>
+                        </li>
+                        {/block:ifPatreon}
+                        {block:ifFlattr}
+                        <script id='fb56ass'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid={text:Flattr}&button=compact&url='+encodeURIComponent({Permalink});f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fb56ass');</script>
+                        {/block:ifFlattr}
                     </ul>
                     {/block:ifShowSharingOptions} 
                     {block:ifShowNotes}
@@ -887,7 +934,9 @@
             var markdown_text = $(this).html();
             var html_content = converter.makeHtml(markdown_text);
             $(this).html(html_content);
+            console.log(this, ' was Mardowned.');
         });
+        console.log('All was Markdowned!');
     })();
     </script>
     {/block:ifPageDownURL}
