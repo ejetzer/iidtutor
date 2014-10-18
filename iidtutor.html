@@ -13,7 +13,6 @@
     <meta name="google-site-verification" content="{text:GoogleSiteVerification}" />
     {/block:ifGoogleSiteVerification}
     <meta name="image:Header Background" content="{HeaderImage}"/>
-    <meta name="image:Logo" content="{Avatar}"/>
     <meta name="color:Text" content="#333"/>
     <meta name="color:Link" content="#999"/>
     <meta name="color:Header Text" content="#333"/>
@@ -58,14 +57,12 @@
     <meta name="text:Google Analytics ID" content="">
     <meta name="text:French" content="">
     <meta name="text:English" content="">
-    <meta name="text:Pagedown URL" content="https://github.com/ejetzer/iidtutor/raw/master/pagedown"/>
     <meta name="text:MathJax URL" content="http://cdn.mathjax.org/mathjax/latest"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{Favicon}">
     <link rel="apple-touch-icon" href="{PortraitURL-128}">
     <link rel="alternate" type="application/rss+xml" href="{RSS}">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
-
     {block:ifGoogleWebFont}
     <link href='http://fonts.googleapis.com/css?family={text:Google Web Font}' rel='stylesheet' type='text/css'>
     {/block:ifGoogleWebFont}
@@ -73,7 +70,7 @@
     <style>
     html {
         color: {color:Text};
-        font: 100%/1.5 {block:ifGoogleWebFont}{text:Google Web Font},{/block:ifGoogleWebFont} , serif;
+        font: 100%/1.5 {block:ifGoogleWebFont}{text:Google Web Font},{/block:ifGoogleWebFont} serif;
         -webkit-font-smoothing: antialiased;
         -webkit-text-size-adjust: 100%;
             -ms-text-size-adjust: 100%;
@@ -87,6 +84,7 @@
     a > h2,
     a > h3 {
         color: {color:Text};
+        text-decoration: none;
     }
     .btn {
         -webkit-appearance: none;
@@ -258,7 +256,7 @@
     .next {
         display: none;
     }
-    {block:ifInfiniteScroll}
+    {/block:ifInfiniteScroll}
     img.avatar {
         display: inline;
         margin: 0 .5rem 0 0;
@@ -287,12 +285,10 @@
    src="{text:MathJax URL}/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
     {/block:ifMathJaxURL}
-    {block:ifPageDownURL}
-    <script type="text/ecmascript" src="{text:PageDown URL}/Markdown.Converter.js"></script>
-    <script type="text/ecmascript" src="{text:PageDown URL}/Markdown.Sanitizer.js"></script>
-    <script type="text/ecmascript" src="{text:PageDown URL}/Markdown.Editor.js"></script>
-    {/block:ifPageDownURL}
-    <script type="text/ecmascript" src="./scripts.js"></script>
+    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/pagedown/Markdown.Converter.js"></script>
+    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/pagedown/Markdown.Sanitizer.js"></script>
+    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/pagedown/Markdown.Editor.js"></script>
+    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/scripts.js"></script>
 </head>
 <body>
     <header class="site-header">
@@ -872,7 +868,6 @@
   ga('create', '{text:Google Analytics ID}', 'auto');
   ga('require', 'displayfeatures');
   ga('send', 'pageview');
-
     </script>
     {/block:IfGoogleAnalyticsID}
     {block:ifPageDownURL}
