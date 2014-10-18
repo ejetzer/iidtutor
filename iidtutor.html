@@ -57,9 +57,6 @@
     <meta name="text:Google Analytics ID" content="">
     <meta name="text:French" content="">
     <meta name="text:English" content="">
-    <meta name="text:Github Repository" content="https://github.com/{text:Github}/iddtutor/raw/master"/>
-    <meta name="text:Pagedown URL" content="{text:Github Repository}/pagedown"/>
-    <meta name="text:CSS Base URL" content="{text:Github Repository}/styles"/>
     <meta name="text:MathJax URL" content="http://cdn.mathjax.org/mathjax/latest"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{Favicon}">
@@ -70,8 +67,8 @@
     <link href='http://fonts.googleapis.com/css?family={text:Google Web Font}' rel='stylesheet' type='text/css'>
     {/block:ifGoogleWebFont}
     <link href="http://static.tumblr.com/7esz91z/uVAn5wo0l/main.min.css" rel="stylesheet">
-    <link href="{text:CSS Base URL}/basic.css" rel="stylesheet"/>
     <style>
+    @import("https://raw.githubusercontent.com/{text:Github}/iidtutor/master/styles/basic.css");
     html {
         color: {color:Text};
         font-family: {block:ifGoogleWebFont}{text:Google Web Font},{/block:ifGoogleWebFont} , serif;
@@ -220,12 +217,10 @@
    src="{text:MathJax URL}/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
     {/block:ifMathJaxURL}
-    {block:ifPageDownURL}
-    <script type="text/ecmascript" src="{text:PageDown URL}/Markdown.Converter.js"></script>
-    <script type="text/ecmascript" src="{text:PageDown URL}/Markdown.Sanitizer.js"></script>
-    <script type="text/ecmascript" src="{text:PageDown URL}/Markdown.Editor.js"></script>
-    {/block:ifPageDownURL}
-    <script type="text/ecmascript" src="./scripts.js"></script>
+    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/pagedown/Markdown.Converter.js"></script>
+    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/pagedown/Markdown.Sanitizer.js"></script>
+    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/pagedown/Markdown.Editor.js"></script>
+    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/scripts.js"></script>
 </head>
 <body>
     <header class="site-header">
