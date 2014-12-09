@@ -77,12 +77,15 @@
     }
     a {
         color: {color:Link};
-        text-decoration: underline;
+        text-decoration: none;
         transition: color 0.3s;
     }
-    a > h1,
-    a > h2,
-    a > h3 {
+    .posts a {
+        outline-bottom: 2px dotted {color:Link};
+    }
+    a > h1, h1 a,
+    a > h2, h2 a,
+    a > h3, h3 a {
         color: {color:Text};
         text-decoration: none;
     }
@@ -143,7 +146,7 @@
     }
     {block:ifShowSearch}
     .toggle-search {
-        top: 0; right: 0;
+        top: 0; left: 1cm;
     }
     {/block:ifShowSearch}
     {block:ifShowExifData}
@@ -409,7 +412,7 @@
             {/block:ifShowSocial}
             {block:SearchPage}
             <div class="results">
-                <iframe src="http://duckduckgo.com/search.html?width=350&duck=yes&site=ejetzer.tumblr.com&prefill=Search DuckDuckGo" style="overflow:hidden;margin:0;padding:0;width:483px;height:60px;" frameborder="0"></iframe>
+                <p><iframe src="http://duckduckgo.com/search.html?width=350&duck=yes&site=ejetzer.tumblr.com&prefill=Search DuckDuckGo" style="overflow:hidden;margin:0;padding:0;width:483px;height:60px;" frameborder="0"></iframe></p>
                 {lang:SearchResultCount results for SearchQuery}
                 {block:NoSearchResults}
                     {lang:Sorry no results for SearchQuery}
@@ -418,7 +421,7 @@
             {/block:SearchPage}
             {block:TagPage}
             <div class="results">
-                <iframe src="http://duckduckgo.com/search.html?width=350&duck=yes&site=ejetzer.tumblr.com&prefill=Search DuckDuckGo" style="overflow:hidden;margin:0;padding:0;width:483px;height:60px;" frameborder="0"></iframe>
+                <p><iframe src="http://duckduckgo.com/search.html?width=350&duck=yes&site=ejetzer.tumblr.com&prefill=Search DuckDuckGo" style="overflow:hidden;margin:0;padding:0;width:483px;height:60px;" frameborder="0"></iframe></p>
                 {lang:Showing posts tagged Tag}
             </div>
             {/block:TagPage}
@@ -459,7 +462,6 @@
     </nav>
     {block:ifShowSearch}
     <form id="search" action="/search" method="get">
-        <iframe src="http://duckduckgo.com/search.html?width=350&duck=yes&site=ejetzer.tumblr.com&prefill=Search DuckDuckGo" style="overflow:hidden;margin:0;padding:0;width:483px;height:60px;" frameborder="0"></iframe>
         <input class="input-search" type="text" name="q" value="{SearchQuery}" placeholder="Type then press enter" autocomplete="off">
     </form>
     {/block:ifShowSearch}
