@@ -409,6 +409,7 @@
             {/block:ifShowSocial}
             {block:SearchPage}
             <div class="results">
+                <iframe src="http://duckduckgo.com/search.html?width=350&duck=yes&site=ejetzer.tumblr.com&prefill=Search DuckDuckGo" style="overflow:hidden;margin:0;padding:0;width:483px;height:60px;" frameborder="0"></iframe>
                 {lang:SearchResultCount results for SearchQuery}
                 {block:NoSearchResults}
                     {lang:Sorry no results for SearchQuery}
@@ -417,6 +418,7 @@
             {/block:SearchPage}
             {block:TagPage}
             <div class="results">
+                <iframe src="http://duckduckgo.com/search.html?width=350&duck=yes&site=ejetzer.tumblr.com&prefill=Search DuckDuckGo" style="overflow:hidden;margin:0;padding:0;width:483px;height:60px;" frameborder="0"></iframe>
                 {lang:Showing posts tagged Tag}
             </div>
             {/block:TagPage}
@@ -457,6 +459,7 @@
     </nav>
     {block:ifShowSearch}
     <form id="search" action="/search" method="get">
+        <iframe src="http://duckduckgo.com/search.html?width=350&duck=yes&site=ejetzer.tumblr.com&prefill=Search DuckDuckGo" style="overflow:hidden;margin:0;padding:0;width:483px;height:60px;" frameborder="0"></iframe>
         <input class="input-search" type="text" name="q" value="{SearchQuery}" placeholder="Type then press enter" autocomplete="off">
     </form>
     {/block:ifShowSearch}
