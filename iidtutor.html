@@ -141,7 +141,12 @@
         color: {color:Navbar Icons};
     }
     .nav-bar.active {
-        background: {color:Navbar Background};
+        background: url({image:Header Background}) no-repeat center center {block:ifFixedHeaderBackground} fixed {block:ifFixedHeaderBackground};
+        -webkit-background-size: cover;
+           -moz-background-size: cover;
+             -o-background-size: cover;
+                background-size: cover;
+        background-color: {color:Navbar Background};
         border-bottom: 1px solid #EEE;
     }
     {block:ifShowSearch}
