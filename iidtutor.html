@@ -324,6 +324,9 @@
     <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/pagedown/Markdown.Editor.js"></script>
     <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/scripts.js"></script>
     {/block:ifGithub}
+    <script type="text/javascript">
+    var alltags = new Map();
+    </script>
 </head>
 <body>
     <header class="site-header">
@@ -670,10 +673,19 @@
                         <li>
                             <strong>{lang:Tags}</strong>:
                         </li>
+                        <script type="text/javascript">
+                        	tags = new Array();
+                        </script>
                         {block:Tags}
                         <li>
+                        	<script type="text/javascript">
+                        		tags.push("{Tag}");
+                        	</script>
                             #<a href="{TagURL}" class="tag">{Tag}</a>
                         </li>
+                        <script type="text/javascript">
+                        	alltags.set("{PostID}", tags);
+                        </script>
                         {/block:Tags}
                     </ul>
                     {/block:HasTags}
