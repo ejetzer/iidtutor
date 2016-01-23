@@ -44,7 +44,7 @@
     <meta name="text:Google Plus" content=""/>
     <meta name="text:Twitter" content=""/>
     <meta name="text:LinkedIn" content=""/>
-    <meta name="text:Github" content=""/>
+    <meta name="text:Github" content="ejetzer"/>
     <meta name="text:YouTube" content=""/>
     <meta name="text:Flattr" content=""/>
     <meta name="text:Patreon" content=""/>
@@ -64,6 +64,42 @@
     <meta name="text:Thursday Times" content=""/>
     <meta name="text:Friday Times" content=""/>
     <meta name="text:Saturday Times" content=""/>
+    <meta name="text:Censored" content="'nsfw'"/>
+    <meta name="text:branch" content="modules"/>
+    <script type="text/javascript">
+    less = {
+    	globalVars: {
+    		colorText: {color:Text},
+    		colorLink: {color:Link},
+    		colorHeaderText: {color:Header Text},
+    		colorHeaderBackground: {color:Header Background},
+    		colorNavbarIcons: {color:Navbar Icons},
+    		colorNavbarBackground: {color:Navbar Background},
+    		colorPageBackground: {color:Page Background},
+    		colorFooterBackground: {color:Footer Background},
+    		colorMenuBackground: {color:Menu Background},
+    		colorSearchText: {color:Search Text},
+    		colorSearchBackground: {color:Search Background},
+    		colorButtonText: {color:Button Text},
+    		colorButtonBackground: {color:Button Background},
+    		ifShowTitle: {if:Show Title},
+    		ifShowDescription: {if:Show Description},
+    		ifShowSocial: {if:Show Social},
+    		ifShowTitleInNavbar: {if:Show Title In Navbar},
+    		ifShowSearch: {if:Show Search},
+    		ifShowExifData: {if:Show Exif Data},
+    		ifShowNotes: {if:Show Notes},
+    		ifShowLikeButton: {if:Show Like Button},
+    		ifShowReblogButton: {if:Show Reblog Button},
+    		ifShowSharingOptions: {if:Show Sharing Options},
+    		ifLoadMoreButton: {if:Load More Button},
+    		ifFullWidthPhotos: {if:Full Width Photos},
+    		ifFixedHeaderBackground: {if:Fixed Header Background},
+    		ifShowRSS: {if:Show RSS},
+    		ifShowCalendar: {if:showCalendar}
+    	}
+    };
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{Favicon}">
     <link rel="apple-touch-icon" href="{PortraitURL-128}">
@@ -74,231 +110,6 @@
     {/block:ifGoogleWebFont}
     <link href="http://static.tumblr.com/7esz91z/uVAn5wo0l/main.min.css" rel="stylesheet">
     <style>
-    html {
-        color: {color:Text};
-        font: 100%/1.5 {block:ifGoogleWebFont}"{text:Google Web Font}",{/block:ifGoogleWebFont} serif;
-        -webkit-font-smoothing: antialiased;
-        -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-    }
-    a {
-        color: {color:Link};
-        text-decoration: none;
-        transition: color 0.3s;
-        outline-bottom: 2px dotted {color:Link};
-    }
-    a > h1, h1 a,
-    a > h2, h2 a,
-    a > h3, h3 a {
-        color: {color:Text};
-        text-decoration: none;
-    }
-    .btn {
-        -webkit-appearance: none;
-           -moz-appearance: none;
-                appearance: none;
-        background: {color:Button Background};
-        border: 0;
-        border-radius: 0;
-        color: {color:Button Text};
-        cursor: pointer;
-        font: inherit;
-        -webkit-font-smoothing: inherit;
-        margin: 0;
-        outline: 0;
-        padding: .5rem 1.5rem;
-    }
-    .site-header {
-        background: url({HeaderImage}) no-repeat center center {block:ifFixedHeaderBackground} fixed {block:ifFixedHeaderBackground};
-        -webkit-background-size: cover;
-           -moz-background-size: cover;
-             -o-background-size: cover;
-                background-size: cover;
-        background-color: {color:Header Background};
-        color: {color:Header Text};
-        display: table;
-        height: 50%;
-        {block:IndexPage}
-        height: 70%;
-        {block:IndexPage}
-        text-align: center;
-        width: 100%;
-    }
-    .site-header p {
-        margin-left: 10%; margin-right: 10%;
-    }
-    .site-header a,
-    .site-header h1,
-    .nav-bar h1 {
-        color: {color:Header Text};
-    }
-    .site-header p a {
-        text-decoration: underline;
-    }
-    .nav-bar {
-        background: transparent;
-        height: 48px;
-        position: fixed;
-        top: 0; left: 0;
-        text-align: center;
-        -webkit-transition: background 0.3s;
-           -moz-transition: background 0.3s;
-                transition: background 0.3s;
-        width: 100%;
-        /*z-index: 9999;*/
-    }
-    .nav-bar button {
-        color: {color:Navbar Icons};
-    }
-    .nav-bar.active {
-        background: transparent;
-        -webkit-background-size: cover;
-           -moz-background-size: cover;
-             -o-background-size: cover;
-                background-size: cover;
-        background-color: {color:Navbar Background};
-        border-bottom: 1px solid #EEE;
-    }
-    {block:ifShowSearch}
-    .toggle-search {
-        top: 0; left: 1cm;
-    }
-    {/block:ifShowSearch}
-    {block:ifShowExifData}
-    .toggle-exif {
-        background: #FFF;
-        border-radius: 1rem;
-        color: #000;
-        top: 1rem; right: 1rem;
-        height: 1.5rem;
-        opacity: .5;
-        padding: 0;
-        width: 1.5rem;
-    }
-    {/block:ifShowExifData}
-    .site-nav {
-        background: {color:Menu Background};
-        border-bottom: 1px solid #EEE;
-        display: none;
-        padding: 48px 1.5rem 0 1.5rem;
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%;
-        /*z-index: 999;*/
-    }
-    {block:ifShowSearch}
-    .input-search {
-        -webkit-appearance: none;
-           -moz-appearance: none;
-                appearance: none;
-        background: {color:Search Background};
-        border: 0;
-        border-radius: 0.2cm;
-        color: {color:Search Text};
-        font: inherit;
-        -webkit-font-smoothing: inherit;
-        height: 0.9cm;
-        margin: 0.2cm;
-        outline: 0;
-        padding: 0;
-        position: fixed;
-        top: 0; left: 2.3cm;
-        width: 0;
-        -webkit-transition: all 0.3s;
-           -moz-transition: all 0.3s;
-                transition: all 0.3s;
-    }
-    .input-search.active {
-        padding: 0 1.5rem;
-        width: 50%;
-        width: -moz-calc(50%-2.5cm);
-        width: -webkit-calc(50%-2.5cm);
-        width: -o-calc(50%-2.5cm);
-        width: calc(50%-2.5cm);
-        /*z-index: 99999;*/
-    }
-    {/block:ifShowSearch}
-    .posts {
-        background: {color:Page Background};
-        padding: 1.5rem;
-    }
-    .photo {
-        max-width: {text:Photo Max Width};
-    }
-    .photo-wrapper {
-        position: relative;
-    }
-    {block:ifShowExifData}
-    .exif {
-        background: rgba(255,255,255,.8);
-        font-size: .875rem;
-        opacity: 0;
-        padding: 1rem;
-        position: absolute;
-        pointer-events: none;
-        top: 0; right: 0; bottom: 0; left: 0;
-        -webkit-transition: opacity 0.3s;
-           -moz-transition: opacity 0.3s;
-                transition: opacity 0.3s;
-    }
-    .exif.active {
-        opacity: 1;
-        pointer-events: auto;
-    }
-    .exif ul {
-        list-style: none;
-        padding: 0;
-    }
-    {/block:ifShowExifData}
-    .video {
-        max-width: {text:Video Max Width};
-    }
-    .photo img,
-    .photoset-grid {
-        display: block;
-        height: auto;
-        margin: 0 auto 1rem auto;
-        {block:ifFullWidthPhotos}
-        width: 100%;
-        {/block:ifFullWidthPhotos}        
-    }
-    .site-footer {
-        background: {color:Footer Background};
-        text-align: center;
-        padding-bottom: 3rem;
-    }
-    {block:ifLoadMoreButton}
-    .previous,
-    .next {
-        display: none;
-    }
-    {/block:ifLoadMoreButton}
-    img.avatar {
-        display: inline;
-        margin: 0 .5rem 0 0;
-        width: auto;
-    }
-    .logo {
-        display: block;
-        margin: 0 auto 1rem auto;
-    }
-    {block:ifShowCalendar}
-    #calendar {
-        position: relative;
-        margin-left: 20%; margin-right: 20%;
-        width: 60%;
-        border-collapse: collapse;
-    }
-    #calendar th {
-        border-bottom: 2px solid black;
-        text-align: center;
-    }
-    #calendar th:first-of-type, #calendar td:first-of-type,
-    #calendar th:last-of-type, #calendar td:last-of-type {
-        background-color: rgba(200, 200, 200, 0.4);
-        padding-bottom: 1px;
-    }
-    {/block:ifShowCalendar}
     {CustomCSS}
     </style>
     {block:ifMathJaxURL}
@@ -318,17 +129,21 @@
    src="{text:MathJax URL}/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
     {/block:ifMathJaxURL}
-    {block:ifGithub}
-    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/pagedown/Markdown.Converter.js"></script>
-    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/pagedown/Markdown.Sanitizer.js"></script>
-    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/pagedown/Markdown.Editor.js"></script>
-    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/scripts.js"></script>
-    <link rel="stylesheet/less" type="text/css" href="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/styles.less" />
-    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/master/less.js">
-    {/block:ifGithub}
     <script type="text/javascript">
-    var alltags = new Map();
+    censored = [{text:Censored}];
+    alltags = new Map();
     </script>
+    <script src="http://static.tumblr.com/fk7a7ro/6pcn48tuo/jquery-2.1.0.min.js"></script>
+    {block:ifGithub}
+    <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/{text:Github}/iidtutor/{text:branch}/jquery-ui/jquery-ui.min.css" />
+    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/{text:branch}/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/{text:branch}/pagedown/Markdown.Converter.js"></script>
+    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/{text:branch}/pagedown/Markdown.Sanitizer.js"></script>
+    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/{text:branch}/pagedown/Markdown.Editor.js"></script>
+    <link rel="stylesheet/less" type="text/css" href="https://raw.githubusercontent.com/{text:Github}/iidtutor/{text:branch}/styles.less" />
+    <script type="text/ecmascript" src="https://raw.githubusercontent.com/{text:Github}/iidtutor/{text:branch}/scripts.js"></script>
+    {/block:ifGithub}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
 </head>
 <body>
     <header class="site-header">
@@ -529,7 +344,12 @@
     <section class="posts">
         <div class="posts-inner">
             {block:Posts}
-            <article class="post {PostType}">
+            <article class="post {PostType}" id="post{PostID}">
+            	<div class="warning">
+            		<h2>Warning</h2>
+            		<p>This post may not be suitable for people who are not yet fully grown. Ask someone more grown than you if you can read this before clicking.</p>
+            		<a href="#">I wanna read this. Let me!</a>
+            	</div>
                 {block:Text}
                 {block:Title}
                 <a href="{Permalink}">
@@ -829,7 +649,6 @@
         {/block:NextPost} 
         {/block:PermalinkPagination}
     </footer>
-    <script src="http://static.tumblr.com/fk7a7ro/6pcn48tuo/jquery-2.1.0.min.js"></script>
     <script src="http://static.tumblr.com/7esz91z/rUin4yx1g/photosetgrid1.0.1.js"></script>
     <script>
         $(document).ready(function() {
