@@ -1,30 +1,30 @@
 html {
-	color: {color:Text};
-	font: 100%/1.5 {block:ifGoogleWebFont}"{text:Google Web Font}",{/block:ifGoogleWebFont} serif;
+	color: @colorText;
+	font: 100%/1.5 {block:ifGoogleWebFont}@GoogleWebFont,{/block:ifGoogleWebFont} serif;
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-size-adjust: 100%;
 		-ms-text-size-adjust: 100%;
 }
 a {
-	color: {color:Link};
+	color: @colorLink;
 	text-decoration: none;
 	transition: color 0.3s;
-	outline-bottom: 2px dotted {color:Link};
+	outline-bottom: 2px dotted @colorLink;
 }
 a > h1, h1 a,
 a > h2, h2 a,
 a > h3, h3 a {
-	color: {color:Text};
+	color: @colorText;
 	text-decoration: none;
 }
 .btn {
 	-webkit-appearance: none;
 		-moz-appearance: none;
 			appearance: none;
-	background: {color:Button Background};
+	background: @colorButtonBackground;
 	border: 0;
 	border-radius: 0;
-	color: {color:Button Text};
+	color: @colorButtonText;
 	cursor: pointer;
 	font: inherit;
 	-webkit-font-smoothing: inherit;
@@ -33,13 +33,13 @@ a > h3, h3 a {
 	padding: .5rem 1.5rem;
 }
 .site-header {
-	background: url({HeaderImage}) no-repeat center center {block:ifFixedHeaderBackground} fixed {block:ifFixedHeaderBackground};
+	background: url(@textHeaderImage) no-repeat center center {block:ifFixedHeaderBackground} fixed {block:ifFixedHeaderBackground};
 	-webkit-background-size: cover;
 		-moz-background-size: cover;
 			-o-background-size: cover;
 			background-size: cover;
-	background-color: {color:Header Background};
-	color: {color:Header Text};
+	background-color: @colorHeaderBackground;
+	color: @colorHeaderText;
 	display: table;
 	height: 50%;
 	{block:IndexPage}
@@ -54,7 +54,7 @@ a > h3, h3 a {
 .site-header a,
 .site-header h1,
 .nav-bar h1 {
-	color: {color:Header Text};
+	color: @colorHeaderText;
 }
 .site-header p a {
 	text-decoration: underline;
@@ -72,7 +72,7 @@ a > h3, h3 a {
 	/*z-index: 9999;*/
 }
 .nav-bar button {
-	color: {color:Navbar Icons};
+	color: @colorNavbarIcons;
 }
 .nav-bar.active {
 	background: transparent;
@@ -80,7 +80,7 @@ a > h3, h3 a {
 		-moz-background-size: cover;
 			-o-background-size: cover;
 			background-size: cover;
-	background-color: {color:Navbar Background};
+	background-color: @colorNavbarBackground;
 	border-bottom: 1px solid #EEE;
 }
 {block:ifShowSearch}
@@ -101,7 +101,7 @@ a > h3, h3 a {
 }
 {/block:ifShowExifData}
 .site-nav {
-	background: {color:Menu Background};
+	background: @colorMenuBackground;
 	border-bottom: 1px solid #EEE;
 	display: none;
 	padding: 48px 1.5rem 0 1.5rem;
@@ -115,7 +115,7 @@ a > h3, h3 a {
 	-webkit-appearance: none;
 		-moz-appearance: none;
 			appearance: none;
-	background: {color:Search Background};
+	background: @colorSearchBackground;
 	border: 0;
 	border-radius: 0.2cm;
 	color: {color:Search Text};
@@ -143,11 +143,11 @@ a > h3, h3 a {
 }
 {/block:ifShowSearch}
 .posts {
-	background: {color:Page Background};
+	background: @colorPageBackground;
 	padding: 1.5rem;
 }
 .photo {
-	max-width: {text:Photo Max Width};
+	max-width: @textPhotoMaxWidth;
 }
 .photo-wrapper {
 	position: relative;
@@ -175,7 +175,7 @@ a > h3, h3 a {
 }
 {/block:ifShowExifData}
 .video {
-	max-width: {text:Video Max Width};
+	max-width: @textVideoMaxWidth;
 }
 .photo img,
 .photoset-grid {
@@ -187,7 +187,7 @@ a > h3, h3 a {
 	{/block:ifFullWidthPhotos}        
 }
 .site-footer {
-	background: {color:Footer Background};
+	background: @colorFooterBackground;
 	text-align: center;
 	padding-bottom: 3rem;
 }
